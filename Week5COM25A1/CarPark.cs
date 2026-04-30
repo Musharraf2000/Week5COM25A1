@@ -43,5 +43,32 @@ namespace Week5COM25A1
             parkingTicketNumberCounter++;
             totalVehiclesParked++;
         }
+
+        public static void RemoveVehicle()
+        {
+            Console.WriteLine("Enter the plate number of the vehicle: ");
+            int plateNumber = int.Parse(Console.ReadLine());
+            int index = 0;
+            bool found = false;
+            foreach (ParkingTicket ticket in parkedVehicles)
+            {
+                if (ticket.Vehicle.PlateNumber == plateNumber)
+                {
+                    index = parkedVehicles.IndexOf(ticket);
+                    found = true;
+                }
+            }
+            if (found) {
+                parkedVehicles.RemoveAt(index);
+                totalVehiclesParked--;
+                Console.WriteLine("Vehicle Removed");
+               
+            }
+            else
+            {
+                 Console.WriteLine("Vehicle not found.");
+            }
+            
+        }
     }
 }
